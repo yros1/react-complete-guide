@@ -38,12 +38,23 @@ class App extends Component {
   // list of suporrted events here https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/t/lecture/8124210?start=0    
       
   render() {
+
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     return (
       // This is not HTML! This is JSX
       <div className="App">
         <h1>Hi, I'm a React App.</h1>
         <p> This is realy working!</p>
-        <button onClick={() => this.switchNameHandler('Maximilian')}>Switch Name</button>
+        <button 
+          style = {style}
+          onClick={() => this.switchNameHandler('Maximilian')}>Switch Name</button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age}/>
