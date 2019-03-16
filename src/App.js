@@ -25,9 +25,10 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;   // fetch current persons array into const variable
-    persons.splice(personIndex, 1);       // deleting one element of specific index
-    this.setState({persons: persons})     // updating current state by passing new version of persons array
+    // const persons = this.state.persons.slice();   // fetch current persons array into const variable. Slice() does a copy of array and returns it to variable.
+    const persons = [...this.state.persons];       // usage of ES6 sprerad operator as an alternative to above slice() example.
+    persons.splice(personIndex, 1);               // deleting one element of specific index
+    this.setState({persons: persons})             // updating current state by passing new version of persons array
   }
 
   // list of suporrted events here https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/t/lecture/8124210?start=0    
