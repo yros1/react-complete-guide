@@ -12,19 +12,7 @@ class App extends Component {
     ],
     otherState : 'some other value',
     showPersons: false
-  }
-
-  switchNameHandler = (newName) => {
-    // console.log('Was clicked!');
-    // DON'T DO THIS: this.state.persons[0].name = 'Maximilian';
-    this.setState({
-      persons: [
-        { name: newName, age: 28 },
-        { name: 'Manu', age: 29 },
-        { name: 'Stephanie', age: 27 }
-      ]
-    })
-  }
+  } 
 
   nameChangedHandler = (event) => {
     this.setState({
@@ -34,6 +22,12 @@ class App extends Component {
         { name: 'Stephanie', age: 26 }
       ]
     })
+  }
+
+  deletePersonHandler = (personIndex) => {
+    const persons = this.state.persons;   // fetch current persons array into const variable
+    persons.splice(personIndex, 1);       // deleting one element of specific index
+    this.setState({persons: persons})     // updating current state by passing new version of persons array
   }
 
   // list of suporrted events here https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/t/lecture/8124210?start=0    
@@ -58,23 +52,14 @@ class App extends Component {
     if (this.state.showPersons) {
        persons = (
         <div>
-          {this.state.persons.map(person => {
+          {this.state.persons.map((person, index) => {
             // return we returning JSX code here, which is our functional component Person
             return <Person 
+              click={() => this.deletePersonHandler(index)}
+              // click={this.deletePersonHandler(bind(this, index))}
               name={person.name}
               age={person.age} />
           })}
-          {/* <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age}/>
-          <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, 'Max!')}
-            changed={this.nameChangedHandler} >My Hobies: Racing</Person>
-          <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age}/>  */}
         </div>
        );
     }
