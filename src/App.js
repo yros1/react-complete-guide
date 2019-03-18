@@ -10,18 +10,28 @@ class App extends Component {
       { id: 'dfsefa', name: 'Manu', age: 29 },
       { id: 'teswef', name: 'Stephanie', age: 26 }
     ],
-    otherState : 'some other value',
+    otherState: 'some other value',
     showPersons: false
   } 
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Max', age: 28 },
-        { name: event.target.value, age: 29 },
-        { name: 'Stephanie', age: 26 }
-      ]
-    })
+  nameChangedHandler = ( event, id ) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    // this is alternative of above aproach - spread operator. How to do a copy of object into a new object.
+    // const person = Object.assign({}, this.state.persons[personIndex]);
+
+    this.setState( {persons: persons} );
   }
 
   deletePersonHandler = (personIndex) => {
@@ -35,7 +45,7 @@ class App extends Component {
   
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons: !doesShow});
+    this.setState( {showPersons: !doesShow} );
   }
 
   render() {
@@ -60,7 +70,8 @@ class App extends Component {
               // click={this.deletePersonHandler(bind(this, index))}
               name={person.name}
               age={person.age}
-              key={person.id} />              
+              key={person.id} 
+              changed={(event) => this.nameChangedHandler(event, person.id)} />        
           })}
         </div>
        );
