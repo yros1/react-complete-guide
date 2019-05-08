@@ -41,6 +41,14 @@ class App extends Component {
     this.setState({persons: persons})             // updating current state by passing new version of persons array
   }
 
+  // here we use personId instead personIndex
+  deletePersonV2Handler = (personId) =>
+  {
+    const persons = [...this.state.persons];
+    persons.splice(personId, 1);
+    this.setState({persons: persons});
+  }
+
   // list of suporrted events here https://www.udemy.com/react-the-complete-guide-incl-redux/learn/v4/t/lecture/8124210?start=0    
   
   togglePersonsHandler = () => {
@@ -68,7 +76,8 @@ class App extends Component {
             // return we returning JSX code here, which is our functional component Person
             return <Person 
               click={() => this.deletePersonHandler(index)}
-              // click={this.deletePersonHandler(bind(this, index))}
+              // click={() => this.deletePersonV2Handler(person.id)} // this version uses person id
+              // click={this.deletePersonHandler(bind(this, index))} // this is an alternative where use bind()
               name={person.name}
               age={person.age}
               key={person.id} 
@@ -95,6 +104,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App.</h1>
         <p className={classes.join(' ')}> This is realy working!</p>
+
         <button 
           style = {style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
