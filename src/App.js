@@ -80,11 +80,20 @@ class App extends Component {
        style.backgroundColor = 'red';
     }    
 
+    // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
+    const classes = [];
+    if (this.state.persons.length <=2){
+      classes.push('red'); // classes = ['red']
+    }
+    if (this.state.persons.length <=1){
+      classes.push('bold'); // classes = ['red', 'bold']
+    }
+
     return (
       // This is not HTML! This is JSX
       <div className="App">
         <h1>Hi, I'm a React App.</h1>
-        <p> This is realy working!</p>
+        <p className={classes.join(' ')}> This is realy working!</p>
         <button 
           style = {style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
