@@ -13,19 +13,32 @@ import './Person.css';
 
 // 3) ES6 syntax
 const person = (props) => {
-    const personsLenght = props.personsLenght;
-
-    let classes = ['Person'];
-    if  (personsLenght <= 2){        
-        classes = ['PersonV2'];
+    
+    const style = {
+        color: 'black',
+        fontWeight: 'normal',
+        fontSize: '15px'
     }
-    if  (personsLenght <= 1){        
-        classes = ['PersonV3'];
+
+    const updateStyle = (color, fontWeight, fontSize) => {
+        style.color = color;
+        style.fontWeight = fontWeight;
+        style.fontSize = fontSize;
+    }
+
+    const classes = ['Person'];
+    if  (props.personsLenght <= 2){        
+        classes.push('orangeBackgroundColor');
+        updateStyle('blue', 'bold', '25px');
+    }
+    if  (props.personsLenght <= 1){        
+        classes.push('pinkBackgroundColor'); // overrite orange one
+        updateStyle('brown', '900', '35px');
     }
 
     return (
-        <div className={classes}>
-            <p onClick={props.click}> I'm {props.name} and I am {props.age} years old!</p>
+        <div className={classes.join(' ')}>
+            <p style={style} onClick={props.click}> I'm {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name}/>
         </div>
