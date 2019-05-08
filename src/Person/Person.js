@@ -13,8 +13,18 @@ import './Person.css';
 
 // 3) ES6 syntax
 const person = (props) => {
+    const personsLenght = props.personsLenght;
+
+    let classes = ['Person'];
+    if  (personsLenght <= 2){        
+        classes = ['PersonV2'];
+    }
+    if  (personsLenght <= 1){        
+        classes = ['PersonV3'];
+    }
+
     return (
-        <div className="Person">
+        <div className={classes}>
             <p onClick={props.click}> I'm {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name}/>
