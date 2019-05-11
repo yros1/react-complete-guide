@@ -27,7 +27,7 @@ const person = (props) => {
         style.fontSize = fontSize;
     }
 
-    let classes = ['Person'];
+    const classes = ['Person'];
 
     style[':hover'] = {    
         backgroundColor: 'lightBlue',
