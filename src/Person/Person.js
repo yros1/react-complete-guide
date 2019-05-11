@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium'
 import './Person.css';
 // in general, a component is a fnction which returns some JSX - the custom html element.
 // 1) Simple fnction approach
@@ -26,7 +27,13 @@ const person = (props) => {
         style.fontSize = fontSize;
     }
 
-    const classes = ['Person'];
+    let classes = ['Person'];
+
+    style[':hover'] = {    
+        backgroundColor: 'lightBlue',
+        color: 'white'
+    }
+
     if  (props.personsLenght <= 2){        
         classes.push('orangeBackgroundColor');
         updateStyle('blue', 'bold', '25px');
@@ -41,8 +48,8 @@ const person = (props) => {
             <p style={style} onClick={props.click}> I'm {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name}/>
-        </div>
+        </div>        
     )
 };
 
-export default person;
+export default Radium(person);

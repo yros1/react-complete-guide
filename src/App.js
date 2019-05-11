@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium from 'radium'
 import Person from './Person/Person';
 
 // Throug App component nest here all other components the app might need
@@ -64,7 +65,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {                 // radium understands that
+        backgroundColor: 'lightgreen',
+        color: 'black '
+      }
     };
 
     let persons = null;
@@ -88,6 +93,10 @@ class App extends Component {
        );
 
        style.backgroundColor = 'red';
+       style[':hover'] = {                 // radium understands that
+        backgroundColor: 'salmon',
+        color: 'black '
+      }
     }    
 
     // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
@@ -116,4 +125,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App); // this is called a higher order component
