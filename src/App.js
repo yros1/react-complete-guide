@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium'
+import Radium, { StyleRoot } from 'radium'
 import Person from './Person/Person';
 
 // Throug App component nest here all other components the app might need
@@ -109,17 +109,19 @@ class App extends Component {
     }
 
     return (
-      // This is not HTML! This is JSX
-      <div className="App">
-        <h1>Hi, I'm a React App.</h1>
-        <p className={classes.join(' ')}> This is realy working!</p>
+      <StyleRoot>
+        {/* This is not HTML! This is JSX */}
+        <div className="App">
+          <h1>Hi, I'm a React App.</h1>
+          <p className={classes.join(' ')}> This is realy working!</p>
 
-        <button 
-          style = {style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {/* persons variable which contains JSX code */}
-        {persons}
-      </div>
+          <button 
+            style = {style}
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          {/* persons variable which contains JSX code */}
+          {persons}
+        </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
