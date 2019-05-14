@@ -22,12 +22,17 @@
 
 .Person input.InputDefault {
     padding: 3px;
-    background-color: #D9ECEC;    
+    background-color: #E0FAFA;
     border: 0px;
 }
 
 .Person:hover input.InputDefault {
-    background-color: white;
+    background-color: white;    
+}
+
+.Person input.InputDefault:hover {
+    border: 1px solid black;
+    background-color: #E0FAFA;    
 }
 
 @media (min-width: 500px) {
