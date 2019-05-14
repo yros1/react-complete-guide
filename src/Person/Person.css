@@ -20,6 +20,16 @@
     color: darkblue;
 }
 
+.Person input.InputDefault {
+    padding: 3px;
+    background-color: #D9ECEC;    
+    border: 0px;
+}
+
+.Person:hover input.InputDefault {
+    background-color: white;
+}
+
 /* @media (min-width: 500px) {
     .Person {
         width: 450px;
