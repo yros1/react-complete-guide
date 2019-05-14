@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, { StyleRoot } from 'radium'
 import Person from './Person/Person';
 
 // Throug App component nest here all other components the app might need
@@ -65,11 +64,7 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer',
-      ':hover': {                 // radium understands that
-        backgroundColor: 'lightgreen',
-        color: 'black '
-      }
+      cursor: 'pointer'      
     };
 
     let persons = null;
@@ -93,10 +88,6 @@ class App extends Component {
        );
 
        style.backgroundColor = 'red';
-       style[':hover'] = {                 // radium understands that
-        backgroundColor: 'salmon',
-        color: 'black '
-      }
     }    
 
     // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
@@ -108,9 +99,8 @@ class App extends Component {
       classes.push('bold'); // classes = ['red', 'bold']
     }
 
-    return (
-      <StyleRoot>
-        {/* This is not HTML! This is JSX */}
+    return (      
+        // This is not HTML! This is JSX
         <div className="App">
           <h1>Hi, I'm a React App.</h1>
           <p className={classes.join(' ')}> This is realy working!</p>
@@ -120,11 +110,10 @@ class App extends Component {
             onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {/* persons variable which contains JSX code */}
           {persons}
-        </div>
-      </StyleRoot>
+        </div>      
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
 }
 
-export default Radium(App); // this is called a higher order component
+export default App; // this is called a higher order component

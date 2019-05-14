@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium from 'radium'
 import './Person.css';
 // in general, a component is a fnction which returns some JSX - the custom html element.
 // 1) Simple fnction approach
@@ -14,12 +13,6 @@ import './Person.css';
 
 // 3) ES6 syntax
 const person = (props) => {
-    
-    const mediQueryStyle ={
-        '@media (min-width: 500px)': { // this is still java script property name. Since is a string is a valid name. Radium uunderstads this.
-            width: '450px'
-        }
-    };
 
     const style = {
         color: 'black',
@@ -50,7 +43,7 @@ const person = (props) => {
     }
 
     return (
-        <div className={classes.join(' ')} style={mediQueryStyle} >
+        <div className={classes.join(' ')} >
             <p style={style} onClick={props.click}> I'm {props.name} and I am {props.age} years old!</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.changed} value={props.name}/>
@@ -58,4 +51,4 @@ const person = (props) => {
     )
 };
 
-export default Radium(person);
+export default person;
