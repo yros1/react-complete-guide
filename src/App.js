@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 // Throug App component nest here all other components the app might need
@@ -91,19 +91,19 @@ class App extends Component {
     }    
 
     // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <=2){
-      classes.push('red'); // classes = ['red']
+      assignedClasses.push(classes.red); // classes = ['red']
     }
     if (this.state.persons.length <=1){
-      classes.push('bold'); // classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); // classes = ['red', 'bold']
     }
 
     return (      
         // This is not HTML! This is JSX
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I'm a React App.</h1>
-          <p className={classes.join(' ')}> This is realy working!</p>
+          <p className={assignedClasses.join(' ')}> This is realy working!</p>
 
           <button 
             style = {style}
