@@ -7,12 +7,17 @@
     text-align: center;
 }
 
-.orangeBackgroundColor{
-    background-color: orange;
+.Person:hover{
+    border: 1px solid #D9ECEC;
+    background-color: #E0FAFA;
+    box-shadow: 0 2px 3px #D9ECEC;
 }
 
-.pinkBackgroundColor{
-    background-color: pink;
+.Person:hover p {
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkblue;
 }
 
 /* @media (min-width: 500px) {
