@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 // Throug App component nest here all other components the app might need
 class App extends Component {
@@ -65,16 +66,17 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             // return we returning JSX code here, which is our functional component Person
-            return <Person 
-              click={() => this.deletePersonHandler(index)}
-              // click={() => this.deletePersonV2Handler(person.id)} // this version uses person id
-              // click={this.deletePersonHandler(bind(this, index))} // this is an alternative where use bind()
-              name={person.name}
-              age={person.age}
-              key={person.id} 
-              personsLenght = {this.state.persons.length}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />        
-          })}
+            return <ErrorBoundary key={person.id} >
+              <Person 
+                click={() => this.deletePersonHandler(index)}
+                // click={() => this.deletePersonV2Handler(person.id)} // this version uses person id
+                // click={this.deletePersonHandler(bind(this, index))} // this is an alternative where use bind()
+                name={person.name}
+                age={person.age}                
+                personsLenght = {this.state.persons.length}
+                changed={(event) => this.nameChangedHandler(event, person.id)} />
+              </ErrorBoundary>
+          } )}
         </div>
        );
 
