@@ -14,6 +14,8 @@ import classes from './Person.css';
 // 3) ES6 syntax
 const person = (props) => {
 
+    console.log('[Person.js] rendering...');
+
     let inputClass = classes.InputDefault;
 
     const rnd = Math.random();

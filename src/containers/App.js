@@ -5,6 +5,12 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 // Throug App component nest here all other components the app might need
 class App extends Component {
+constructor(props) {
+  super(props);
+  console.log('[App.js] constructor');
+  // You can initialize state here.
+}
+
   state = {
     persons: [
       { id: 'sdafdf', name: 'Max', age: 28 },
@@ -14,6 +20,21 @@ class App extends Component {
     otherState: 'some other value',
     showPersons: false
   } 
+
+  static getDerivedStateFromProps(props, state) {
+    // you should retrun updated state here
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+  
+  componentWillMount(){
+    console.log('[App.js] componentWillMount');
+  }  
+
+  componentDidMount(){
+    // Yo could do http requests here
+    console.log('[App.js] componentDidMount');
+  }
 
   nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -50,6 +71,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] render');
     let persons = null;
 
     if (this.state.showPersons) {
