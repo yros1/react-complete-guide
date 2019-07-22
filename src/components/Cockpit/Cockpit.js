@@ -5,11 +5,18 @@ const cockpit = (props) => {
     // here normal javascript code
      // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
 
-     // Pass a fucntions to useEffect() and this execiute for every render cycle of the Cockpit component.     
+     // Pass a fucntions to useEffect() and this execiute for every render cycle of the Cockpit component.   
+     // useEffect is a React Hook and it combines componentDidMount and componentDidUpdate Life cycle hooks.
      useEffect(() => {
        console.log('[Cockpit.js useEffect]');
        // Http request...
-     })
+       setTimeout(() => {
+         alert('Saved data to cloud!');
+       }, 1000)
+     }, []); // if pass an empty array then useEffect runs just once at first time. - This technic mimic 
+             // behaviour of componentDidAmount metchod. 
+
+     // useEffect(); - I can use it multilpy times for different data setup/update.
 
      const assignedClasses = [];
      let btnClass = '';
