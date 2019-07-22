@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
     // here normal javascript code
      // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
+
+     // Pass a fucntions to useEffect() and this execiute for every render cycle of the Cockpit component.     
+     useEffect(() => {
+       console.log('[Cockpit.js useEffect]');
+       // Http request...
+     })
+
      const assignedClasses = [];
      let btnClass = '';
      if (props.showPersons){
