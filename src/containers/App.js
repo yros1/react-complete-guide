@@ -27,9 +27,9 @@ constructor(props) {
     return state;
   }
   
-  componentWillMount(){
-    console.log('[App.js] componentWillMount');
-  }  
+  // componentWillMount(){
+  //   console.log('[App.js] componentWillMount');
+  // }  
 
   componentDidMount(){
     // Yo could do http requests here
