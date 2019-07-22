@@ -31,9 +31,21 @@ constructor(props) {
   //   console.log('[App.js] componentWillMount');
   // }  
 
+  // Here we do fetching new data from a server
   componentDidMount(){
     // Yo could do http requests here
     console.log('[App.js] componentDidMount');
+  }
+
+  // this can be used for performence iprovements
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+  // Here we do fetching new data from a server
+  componentDidUpdate(){
+    console.log('[App.js] componentDidUpdate');
   }
 
   nameChangedHandler = ( event, id ) => {
