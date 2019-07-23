@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass'
+import withClass from '../hoc/withClass'
+import Aux from '../hoc/Auxilliary'
 
 // Throug App component nest here all other components the app might need
 class App extends Component {
@@ -97,7 +98,7 @@ constructor(props) {
 
     return (      
         // This is not HTML! This is JSX
-        <WithClass classes={classes.App}>
+        <Aux>
           <button onClick={() => {
             this.setState({ showCockpit: false })
             }}
@@ -113,10 +114,10 @@ constructor(props) {
           ) : null }
           
           {persons}
-        </WithClass>      
+        </Aux>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
 }
 
-export default App; // this is called a higher order component
+export default withClass(App, classes.App);
