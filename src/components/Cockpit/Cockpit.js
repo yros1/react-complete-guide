@@ -12,11 +12,22 @@ const cockpit = (props) => {
        // Http request...
        setTimeout(() => {
          alert('Saved data to cloud!');
-       }, 1000)
+       }, 1000);
+       // Anonymous function in return runs BEFORE the main useEffect function runs, but AFTER the (first) render cycle.
+       return () => {
+         console.log('[Cockpit.js cleanup work in useEffect]');
+       };
      }, []); // if pass an empty array then useEffect runs just once at first time. - This technic mimic 
              // behaviour of componentDidAmount metchod. 
+             // Also an empty array causes that Cleanup function runs when compoents gets destroyed
 
-     // useEffect(); - I can use it multilpy times for different data setup/update.
+     useEffect(() => {
+      console.log('[Cockpit.js 2nd useEffect]');
+      return () => {
+        console.log('[Cockpit.js cleanup work in 2nd useEffect]');
+      };
+     }); // Lack of second argument (like an empty array, or array with some values) causes that that
+         // Cleanup function runs at every update cycle.
 
      const assignedClasses = [];
      let btnClass = '';

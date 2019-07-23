@@ -18,7 +18,8 @@ constructor(props) {
       { id: 'teswef', name: 'Stephanie', age: 26 }
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   } 
 
   static getDerivedStateFromProps(props, state) {
@@ -37,7 +38,7 @@ constructor(props) {
     console.log('[App.js] componentDidMount');
   }
 
-  // this can be used for performence iprovements
+  // this can be used for performence iprovements/optimalizations
   shouldComponentUpdate(nextProps, nextState){
     console.log('[App.js] shouldComponentUpdate');
     return true;
@@ -96,11 +97,20 @@ constructor(props) {
     return (      
         // This is not HTML! This is JSX
         <div className={classes.App}>
-          <Cockpit 
+          <button onClick={() => {
+            this.setState({ showCockpit: false })
+            }}
+            >
+              Remove Cockpit
+          </button>
+          { this.state.showCockpit ? (
+            <Cockpit 
             title = {this.props.appTitle}
             showPersons = {this.state.showPersons}
             persons = {this.state.persons} 
             clicked = {this.togglePersonsHandler}/>
+          ) : null }
+          
           {persons}
         </div>      
     );
