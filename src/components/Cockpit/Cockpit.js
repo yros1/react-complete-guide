@@ -10,12 +10,11 @@ const cockpit = (props) => {
      useEffect(() => {
        console.log('[Cockpit.js useEffect]');
        // Http request...
-       const timer = setTimeout(() => {
+       setTimeout(() => {
          alert('Saved data to cloud!');
        }, 1000);
        // Anonymous function in return runs BEFORE the main useEffect function runs, but AFTER the (first) render cycle.
        return () => {
-         clearTimeout(timer);
          console.log('[Cockpit.js cleanup work in useEffect]');
        };
      }, []); // if pass an empty array then useEffect runs just once at first time. - This technic mimic 
