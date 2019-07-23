@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Aux from '../../../hoc/Auxilliary';
 import classes from './Person.css';
 // in general, a component is a fnction which returns some JSX - the custom html element.
@@ -18,12 +18,12 @@ class Person extends Component {
         // It returns JSX code.
         console.log('[Person.js] rendering...');    
         return (
-            <Aux>
+            <Fragment>
                 <p onClick={this.props.click}> I'm {this.props.name} and I am {this.props.age} years old!
                 </p>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.changed} value={this.props.name}/>
-            </Aux>
+            </Fragment>
         );
     }    
 }
