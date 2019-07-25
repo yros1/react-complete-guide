@@ -21,7 +21,8 @@ constructor(props) {
     ],
     otherState: 'some other value',
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   } 
 
   static getDerivedStateFromProps(props, state) {
@@ -68,7 +69,13 @@ constructor(props) {
     // this is alternative of above aproach - spread operator. How to do a copy of object into a new object.
     // const person = Object.assign({}, this.state.persons[personIndex]);
 
-    this.setState( {persons: persons} );
+    // This is better and recomended way of updating the State WHEN you depending on old state.
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changeCounter: prevState.changeCounter + 1
+      }
+    });
   }
 
   deletePersonHandler = (personIndex) => {
