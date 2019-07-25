@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Aux from '../../../hoc/Auxilliary';
+import withClasss from '../../../hoc/withClass';
 import classes from './Person.css';
 // in general, a component is a fnction which returns some JSX - the custom html element.
 // 1) Simple fnction approach
@@ -28,4 +29,4 @@ class Person extends Component {
     }    
 }
 
-export default Person;
+export default withClasss(Person, classes.Person);
