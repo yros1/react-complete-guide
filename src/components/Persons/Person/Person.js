@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import Aux from '../../../hoc/Auxilliary';
 import withClasss from '../../../hoc/withClass';
 import classes from './Person.css';
@@ -28,5 +30,13 @@ class Person extends Component {
         );
     }    
 }
+
+// In here you define which props this component usese and which types for those props.
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
+};
 
 export default withClasss(Person, classes.Person);
