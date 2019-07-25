@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+  const toggleBtnRef = useRef(null);  
+
     // here normal javascript code
      // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
 
@@ -10,9 +13,10 @@ const cockpit = (props) => {
      useEffect(() => {
        console.log('[Cockpit.js useEffect]');
        // Http request...
-       setTimeout(() => {
-         alert('Saved data to cloud!');
-       }, 1000);
+      //  setTimeout(() => {
+      //    alert('Saved data to cloud!');
+      //  }, 1000);
+      toggleBtnRef.current.click();
        // Anonymous function in return runs BEFORE the main useEffect function runs, but AFTER the (first) render cycle.
        return () => {
          console.log('[Cockpit.js cleanup work in useEffect]');
@@ -46,7 +50,7 @@ const cockpit = (props) => {
         <div className={classes.Cockpit}>
             <h1>{props.title}</h1>
           <p className={assignedClasses.join(' ')}> This is realy working!</p>
-          <button className = {btnClass}
+          <button ref={toggleBtnRef} className = {btnClass}
             onClick={props.clicked}>Toggle Persons</button>
         </div>
     );
