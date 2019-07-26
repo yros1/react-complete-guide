@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import withClass from '../hoc/withClass'
-import Aux from '../hoc/Auxilliary'
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Auxilliary';
+import AuthContext from '../context/auth-context';
 
 // Throug App component nest here all other components the app might need
 class App extends Component {
@@ -119,17 +120,21 @@ constructor(props) {
             >
               Remove Cockpit
           </button>
-          { this.state.showCockpit ? (
-            <Cockpit 
-            title = {this.props.appTitle}
-            showPersons = {this.state.showPersons}
-            personsLength = {this.state.persons.length} 
-            clicked = {this.togglePersonsHandler}
-            login={this.loginHandler}
-            />
-          ) : null }
-          
-          {persons}
+          <AuthContext.Provider value={{
+            authenticated: this.state.authenticated, 
+            login: this.loginHandler 
+            }}
+          >
+            { this.state.showCockpit ? (            
+              <Cockpit 
+              title = {this.props.appTitle}
+              showPersons = {this.state.showPersons}
+              personsLength = {this.state.persons.length} 
+              clicked = {this.togglePersonsHandler}
+              />
+            ) : null }            
+            {persons}
+          </AuthContext.Provider>
         </Aux>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
