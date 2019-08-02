@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Aux from '../../../hoc/Auxilliary';
-import withClasss from '../../../hoc/withClass';
+import withClasss from '../../../hoc/WithClass';
 import classes from './Person.css';
 import AuthContext from '../../../context/auth-context';
 // in general, a component is a fnction which returns some JSX - the custom html element.
