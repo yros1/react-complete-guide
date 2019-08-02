@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import classes from './Cockpit.css';
 import AuthContext from '../../context/auth-context';
 
 const cockpit = (props) => {
 
-  const toggleBtnRef = useRef(null);  
+  const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext); // React make a connection behind a scence
+
+  console.log(authContext.authenticated);
 
     // here normal javascript code
      // let classes = ['red', 'bold'].join(' '); // join - merge together two string from array into one sting with ' ' empty space between them, result will be 'red bold'
@@ -53,13 +56,7 @@ const cockpit = (props) => {
           <p className={assignedClasses.join(' ')}> This is realy working!</p>
           <button ref={toggleBtnRef} className = {btnClass}
             onClick={props.clicked}>Toggle Persons</button>
-
-          <AuthContext.Consumer>
-            {(context) => 
-              <button onClick={context.login}>Log in</button>
-            }
-          </AuthContext.Consumer>
-          
+          <button onClick={authContext.login}>Log in</button>
         </div>
     );
 };
